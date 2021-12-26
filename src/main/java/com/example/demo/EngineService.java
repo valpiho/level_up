@@ -22,6 +22,7 @@ public class EngineService {
     private final String LEVEL_UP_HOST = "https://warp-regulator-bd7q33crqa-lz.a.run.app/api/";
     private String authorizationCode;
     private int timer = 0;
+    private int engineStartsCount = 0;
 
     private final RestTemplate restTemplate;
 
@@ -30,7 +31,7 @@ public class EngineService {
     }
 
     @PostConstruct
-    public void startEngine() throws InterruptedException {
+    private void startEngine() throws InterruptedException {
         log.warn("Starting the engine in:");
         Thread.sleep(1000);
         log.warn("3");
@@ -51,10 +52,11 @@ public class EngineService {
 
         assert response != null;
         authorizationCode = Objects.requireNonNull(response.getBody()).getAuthorizationCode();
+        engineStartsCount++;
         getStatus();
     }
 
-    public void getStatus() throws InterruptedException {
+    private void getStatus() throws InterruptedException {
         Thread.sleep(1000);
         EngineData response = null;
         Map<String, String> params = new HashMap<>();
@@ -71,6 +73,7 @@ public class EngineService {
         assert response != null;
 
         log.info("-------------------------------");
+        log.info("Engine has ben started " + engineStartsCount + " time(s)");
         log.info("Seconds from start: " + timer++ );
         log.info(response.toString());
 
