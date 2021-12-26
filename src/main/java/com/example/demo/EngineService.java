@@ -90,11 +90,11 @@ public class EngineService {
         switch (flowRate) {
             case "LOW" -> {
                 if (intermix < 0.5) {
-                    sendMatters(0.05, -0.03);
+                    sendMatters(0.2, 0.05);
                 }else if (intermix > 0.5) {
-                    sendMatters(-0.03, 0.05);
+                    sendMatters(0.05, 0.2);
                 } else {
-                    sendMatters(0.05, 0.05);
+                    sendMatters(0.1, 0.1);
                 }
             }
             case "OPTIMAL" -> {
@@ -106,9 +106,9 @@ public class EngineService {
             }
             case "HIGH" -> {
                 if (intermix < 0.5) {
-                    sendMatters(0.05, -0.1);
+                    sendMatters(0.05, -0.13);
                 } else if (intermix > 0.5) {
-                    sendMatters(-0.1, 0.05);
+                    sendMatters(-0.13, 0.05);
                 } else {
                     sendMatters(-0.1, -0.1);
                 }
