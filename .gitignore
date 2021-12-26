@@ -1,7 +1,7 @@
-######################
-# Project Specific
-######################
-/target/classes/static/**
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 ######################
 # IntelliJ
@@ -14,22 +14,3 @@
 *.orig
 classes/
 out/
-
-######################
-# Maven
-######################
-/log/
-/target/
-
-######################
-# Package Files
-######################
-*.jar
-*.war
-*.ear
-*.db
-
-######################
-# Maven Wrapper
-######################
-!.mvn/wrapper/maven-wrapper.jar
